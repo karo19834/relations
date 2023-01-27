@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_2.xsd">
+
+
+    <persistence-unit name="persistenceUnitName" transaction-type="RESOURCE_LOCAL">
+        <!--
+        Auflistung der Klassen, die von dieser PersistenceUnit verwaltet werden
+        -->
+        <class>at.campus02.dbp2.relations.Animal</class>
+        <class>at.campus02.dbp2.relations.Student</class>
+        <class>at.campus02.dbp2.relations.Species</class>
+        <class>at.campus02.dbp2.relations.Country</class>
+
+        <properties>
+            <!--
+            Generelle Settings wie JDBC Url und Klassenname des verwendeten Treibers
+            -->
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:derby:database;create=true"/>
+            <property name="javax.persistence.jdbc.driver"
+                      value="org.apache.derby.jdbc.EmbeddedDriver"/>
+
+            <!--
+            Settings des PersistenceProviders sind ebenfalls möglich.
+            In dem Fall möchten wir alle Tabellen beim Start der Verbindung löschen und neu anlegen.
+            -->
+            <property name="eclipselink.ddl-generation"
+                      value="drop-and-create-tables"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>
